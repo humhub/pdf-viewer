@@ -1,0 +1,16 @@
+{
+    "id": "pdf-viewer",
+    "name": "PDF Viewer",
+    "description": "PDF Viewer",
+    "keywords": ["pdf", "pdf viewer", "pdf reader"],
+    "version": "1.0.0",
+    "humhub": {
+        "minVersion": "1.16"
+    },
+    "homepage": "https://github.com/humhub/pdf-viewer",
+    "authors": [
+        {
+            "name": "Lucas Bartholemy"
+        }
+    ]
+}

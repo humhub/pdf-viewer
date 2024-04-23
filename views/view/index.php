@@ -6,20 +6,22 @@
  */
 
 use humhub\modules\file\models\File;
-use humhub\widgets\ModalButton;
+use humhub\modules\pdfViewer\assets\PdfJsAssets;
+use humhub\modules\pdfViewer\assets\PdfViewerAssets;
 use humhub\widgets\ModalDialog;
+use yii\web\View;
 
 /* @var File $file */
+/* @var View $this */
+
+PdfViewerAssets::register($this);
+$pdfJsAssets = PdfJsAssets::register($this);
 ?>
-<?php ModalDialog::begin(['options' => ['style' => 'width:95%']]) ?>
-
+<?php ModalDialog::begin([
+    'header' => $file->file_name,
+    'options' => ['id' => 'pdf-viewer-modal'],
+]) ?>
     <div class="modal-body">
-        <strong><?= $file->file_name ?></strong>: PDF viewer is in progress...
+        <iframe id="pdf-js-viewer" src="<?= $pdfJsAssets->getIframeUrl($file) ?>" title="webviewer" frameborder="0"></iframe>
     </div>
-
-    <div class="modal-footer">
-        <hr>
-        <?= ModalButton::cancel(Yii::t('base', 'Close'))->right() ?>
-    </div>
-
 <?php ModalDialog::end() ?>

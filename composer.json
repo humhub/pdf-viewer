@@ -1,0 +1,8 @@
+{
+    "name": "humhub/pdf-viewer",
+    "description": "HumHub PDF Viewer Module",
+    "type": "library",
+    "require": {
+        "clean-composer-packages/pdf-js": "^4.0"
+    }
+}

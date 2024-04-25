@@ -1,17 +1,17 @@
-#pdf-viewer-modal.modal-dialog {
+#pdf-viewer-modal-dialog {
   width: 95%;
   height: 92%;
 }
-#pdf-viewer-modal .modal-content {
+#pdf-viewer-modal-dialog .modal-content {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-#pdf-viewer-modal .modal-body,
-#pdf-viewer-modal iframe {
+#pdf-viewer-modal-dialog .modal-body,
+#pdf-viewer-modal-dialog iframe {
   width: 100%;
   height: 100%;
 }
-#pdf-viewer-modal .modal-title {
+#pdf-viewer-modal-dialog .modal-title {
   margin-top: 0;
 }

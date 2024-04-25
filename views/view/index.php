@@ -19,7 +19,7 @@ $pdfJsAssets = PdfJsAssets::register($this);
 ?>
 <?php ModalDialog::begin([
     'header' => $file->file_name,
-    'options' => ['id' => 'pdf-viewer-modal'],
+    'options' => ['id' => 'pdf-viewer-modal-dialog'],
 ]) ?>
     <div class="modal-body">
         <iframe id="pdf-js-viewer" src="<?= $pdfJsAssets->getIframeUrl($file) ?>" title="webviewer" frameborder="0"></iframe>

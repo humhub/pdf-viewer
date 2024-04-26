@@ -13,6 +13,7 @@ use humhub\modules\pdfViewer\assets\PdfJsAssets;
 use humhub\modules\pdfViewer\helpers\PdfHelper;
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\web\ServerErrorHttpException;
 
 class ViewController extends Controller
 {
@@ -27,11 +28,7 @@ class ViewController extends Controller
             throw new BadRequestHttpException('Denied request with a wrong file guid!');
         }
 
-        $this->module->initPdfViewer();
-
-        return $this->renderPartial('viewer', [
-            'assetsUrl' => PdfJsAssets::register($this->view)->baseUrl . '/web/',
-        ]);
+        return $this->renderPdfViewer();
     }
 
     private function getFile(): ?File
@@ -49,5 +46,25 @@ class ViewController extends Controller
         }
 
         return $file;
+    }
+
+    /**
+     * Render PDF viewer from source HTML
+     *
+     * @return string
+     * @throws ServerErrorHttpException
+     */
+    private function renderPdfViewer(): string
+    {
+        $sourcePath = Yii::getAlias('@pdf-viewer/vendor/clean-composer-packages/pdf-js/web/viewer.html');
+
+        if (!is_readable($sourcePath)) {
+            throw new ServerErrorHttpException('File "' . $sourcePath . '" is not readable!');
+        }
+
+        $sourceCode = file_get_contents($sourcePath);
+        $assetsUrl = PdfJsAssets::register($this->view)->baseUrl . '/web/';
+
+        return preg_replace('/(<script.+?src="|<link.+?href=")/i', '$1' . $assetsUrl, $sourceCode);
     }
 }

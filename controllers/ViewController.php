@@ -17,6 +17,20 @@ class ViewController extends Controller
 {
     public function actionIndex()
     {
+        return $this->renderAjax('index', ['file' => $this->getFile()]);
+    }
+
+    public function actionOpen()
+    {
+        if ($this->getFile()->getUrl() !== Yii::$app->request->get('file')) {
+            throw new BadRequestHttpException('Denied request with a wrong file guid!');
+        }
+
+        return $this->renderPartial('viewer');
+    }
+
+    private function getFile(): ?File
+    {
         $guid = Yii::$app->request->get('guid', Yii::$app->request->post('guid'));
 
         if (empty($guid)) {
@@ -29,6 +43,6 @@ class ViewController extends Controller
             throw new BadRequestHttpException(Yii::t('PdfViewerModule.base', 'Could not view the requested file!'));
         }
 
-        return $this->renderAjax('index', ['file' => $file]);
+        return $file;
     }
 }

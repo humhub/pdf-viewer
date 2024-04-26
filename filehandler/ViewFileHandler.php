@@ -8,8 +8,8 @@
 namespace humhub\modules\pdfViewer\filehandler;
 
 use humhub\modules\file\handler\BaseFileHandler;
+use humhub\modules\pdfViewer\helpers\Url;
 use Yii;
-use yii\helpers\Url;
 
 class ViewFileHandler extends BaseFileHandler
 {
@@ -20,7 +20,7 @@ class ViewFileHandler extends BaseFileHandler
     {
         return [
             'label' => Yii::t('PdfViewerModule.base', 'View PDF'),
-            'data-action-url' => Url::to(['/pdf-viewer/view', 'guid' => $this->file->guid]),
+            'data-action-url' => Url::toView($this->file),
             'data-action-click' => 'ui.modal.load',
             'data-modal-id' => 'pdf-viewer-modal',
             'data-modal-close' => '',

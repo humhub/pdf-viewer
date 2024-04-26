@@ -9,6 +9,7 @@ namespace humhub\modules\pdfViewer\controllers;
 
 use humhub\components\Controller;
 use humhub\modules\file\models\File;
+use humhub\modules\pdfViewer\assets\PdfJsAssets;
 use humhub\modules\pdfViewer\helpers\PdfHelper;
 use Yii;
 use yii\web\BadRequestHttpException;
@@ -26,7 +27,11 @@ class ViewController extends Controller
             throw new BadRequestHttpException('Denied request with a wrong file guid!');
         }
 
-        return $this->renderPartial('viewer');
+        $this->module->initPdfViewer();
+
+        return $this->renderPartial('viewer', [
+            'assetsUrl' => PdfJsAssets::register($this->view)->baseUrl . '/web/',
+        ]);
     }
 
     private function getFile(): ?File

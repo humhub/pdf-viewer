@@ -10,6 +10,7 @@ namespace humhub\modules\pdfViewer\controllers;
 use humhub\components\Controller;
 use humhub\modules\file\models\File;
 use humhub\modules\pdfViewer\assets\PdfJsAssets;
+use humhub\modules\pdfViewer\assets\PdfViewerAssets;
 use humhub\modules\pdfViewer\helpers\PdfHelper;
 use Yii;
 use yii\web\BadRequestHttpException;
@@ -64,7 +65,9 @@ class ViewController extends Controller
 
         $sourceCode = file_get_contents($sourcePath);
         $assetsUrl = PdfJsAssets::register($this->view)->baseUrl . '/web/';
+        $sourceCode = preg_replace('/(<script.+?src="|<link.+?href=")/i', '$1' . $assetsUrl, $sourceCode);
 
-        return preg_replace('/(<script.+?src="|<link.+?href=")/i', '$1' . $assetsUrl, $sourceCode);
+        $styles = '<link href="' . PdfViewerAssets::register($this->view)->baseUrl . '/css/pdf-viewer-iframe.css" rel="stylesheet">';
+        return str_replace('</head>', $styles . '</head>', $sourceCode);
     }
 }

@@ -8,7 +8,7 @@
 use humhub\modules\file\models\File;
 use humhub\modules\pdfViewer\assets\PdfViewerAssets;
 use humhub\modules\pdfViewer\helpers\Url;
-use humhub\widgets\ModalDialog;
+use humhub\widgets\modal\Modal;
 use yii\web\View;
 
 /* @var File $file */
@@ -16,11 +16,9 @@ use yii\web\View;
 
 PdfViewerAssets::register($this);
 ?>
-<?php ModalDialog::begin([
+<?php Modal::beginDialog([
     'header' => $file->file_name,
-    'options' => ['id' => 'pdf-viewer-modal-dialog'],
+    'size' => Modal::SIZE_EXTRA_LARGE,
 ]) ?>
-    <div class="modal-body">
-        <iframe id="pdf-js-viewer" src="<?= Url::toViewer($file) ?>" title="webviewer" frameborder="0"></iframe>
-    </div>
-<?php ModalDialog::end() ?>
+    <iframe id="pdf-js-viewer" src="<?= Url::toViewer($file) ?>" title="webviewer" frameborder="0"></iframe>
+<?php Modal::endDialog() ?>

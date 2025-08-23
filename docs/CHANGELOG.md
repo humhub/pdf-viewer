@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.1 (August 23, 2025)
+1.1.2 (August 23, 2025)
 -----------------------
 - Fix #8: Update module resources path
 - Enh #1: Initial

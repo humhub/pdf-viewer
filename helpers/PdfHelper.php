@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.humhub.org/
  * @copyright Copyright (c) HumHub GmbH & Co. KG
@@ -18,8 +19,8 @@ class PdfHelper
 
     public static function canView(File $file): bool
     {
-        return self::isPdfFile($file) &&
-            $file->canView() &&
-            is_readable($file->getStore()->get());
+        return self::isPdfFile($file)
+            && $file->canView()
+            && is_readable($file->getStore()->get());
     }
 }

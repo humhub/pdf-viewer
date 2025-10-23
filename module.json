@@ -3,7 +3,7 @@
     "name": "PDF Viewer",
     "description": "PDF Viewer",
     "keywords": ["pdf", "pdf viewer", "pdf reader"],
-    "version": "1.1.1",
+    "version": "1.1.3",
     "humhub": {
         "minVersion": "1.18"
     },

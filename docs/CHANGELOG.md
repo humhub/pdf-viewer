@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.3 (October 23, 2025)
+1.1.4 (October 23, 2025)
 -----------------------
 - Fix: Missing Composer dependencies
 

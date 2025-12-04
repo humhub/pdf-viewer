@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.1.6 (Unreleased)
+-----------------------
+- Enh #15: Increase window width of the PDF viewer
 
 1.1.5 (October 23, 2025)
 -----------------------

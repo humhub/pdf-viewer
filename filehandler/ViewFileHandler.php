@@ -17,6 +17,11 @@ class ViewFileHandler extends BaseFileHandler
     /**
      * @inheritdoc
      */
+    public $position = self::POSITION_TOP;
+
+    /**
+     * @inheritdoc
+     */
     public function getLinkAttributes()
     {
         return [

@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.6 (Unreleased)
------------------------
+1.1.6 (December 4, 2025)
+------------------------
 - Enh #15: Increase window width of the PDF viewer
 - Enh #17: Use top position for PDF viewer file handler
 

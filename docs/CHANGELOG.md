@@ -1,8 +1,12 @@
 Changelog
 =========
 
+1.1.6 (December 4, 2025)
+------------------------
+- Enh #15: Increase window width of the PDF viewer
+- Enh #17: Use top position for PDF viewer file handler
 
-1.1.4 (October 23, 2025)
+1.1.5 (October 23, 2025)
 -----------------------
 - Fix: Missing Composer dependencies
 

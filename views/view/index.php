@@ -18,7 +18,7 @@ PdfViewerAssets::register($this);
 ?>
 <?php Modal::beginDialog([
     'header' => $file->file_name,
-    'size' => Modal::SIZE_EXTRA_LARGE,
+    'size' => Modal::SIZE_FULL_SCREEN,
 ]) ?>
     <iframe id="pdf-js-viewer" src="<?= Url::toViewer($file) ?>" title="webviewer" frameborder="0"></iframe>
 <?php Modal::endDialog() ?>

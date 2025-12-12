@@ -14,6 +14,6 @@ return [
     'class' => 'humhub\modules\pdfViewer\Module',
     'namespace' => 'humhub\modules\pdfViewer',
     'events' => [
-        [FileHandlerCollection::class, FileHandlerCollection::EVENT_INIT, [Events::class, 'onFileHandlerCollection']],
+        [FileHandlerCollection::class, FileHandlerCollection::EVENT_INIT, Events::onFileHandlerCollection(...)],
     ],
 ];

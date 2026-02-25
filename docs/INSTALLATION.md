@@ -11,6 +11,7 @@ AddType text/javascript .mjs
 ## NGINX (server block):
 
 ``` 
+include mime.types;
 types {
     application/javascript mjs;
 }

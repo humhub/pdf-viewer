@@ -17,7 +17,7 @@ use yii\web\View;
 PdfViewerAssets::register($this);
 ?>
 <?php Modal::beginDialog([
-    'header' => $file->file_name,
+    'title' => $file->file_name,
     'size' => Modal::SIZE_FULL_SCREEN,
 ]) ?>
     <iframe id="pdf-js-viewer" src="<?= Url::toViewer($file) ?>" title="webviewer" frameborder="0"></iframe>

@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.7 (Unreleased)
+------------------------
+- Enh #19: Remove deprecations
+
 1.1.6 (December 4, 2025)
 ------------------------
 - Enh #15: Increase window width of the PDF viewer

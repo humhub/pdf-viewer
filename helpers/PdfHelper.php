@@ -21,6 +21,6 @@ class PdfHelper
     {
         return self::isPdfFile($file)
             && $file->canView()
-            && is_readable($file->getStore()->get());
+            && $file->store->has();
     }
 }

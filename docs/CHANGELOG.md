@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.7 (Unreleased)
-------------------------
+1.1.7 (July 31, 2026)
+---------------------
 - Enh #19: Remove deprecations
 
 1.1.6 (December 4, 2025)

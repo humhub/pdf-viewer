@@ -1,6 +1,5 @@
 <?php
-
 return [
-    'Could not view the requested file!' => '',
-    'View PDF' => '',
+  'Could not view the requested file!' => '',
+  'View PDF' => 'Voir le PDF',
 ];

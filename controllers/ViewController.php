@@ -65,10 +65,10 @@ class ViewController extends Controller
         }
 
         $sourceCode = file_get_contents($sourcePath);
-        $assetsUrl = PdfJsAssets::register($this->view)->baseUrl . '/web/';
+        $assetsUrl = Yii::getAlias(PdfJsAssets::register($this->view)->baseUrl) . '/web/';
         $sourceCode = preg_replace('/(<script.+?src="|<link.+?href=")/i', '$1' . $assetsUrl, $sourceCode);
 
-        $styles = '<link href="' . PdfViewerAssets::register($this->view)->baseUrl . '/css/pdf-viewer-iframe.css" rel="stylesheet">';
+        $styles = '<link href="' . Yii::getAlias(PdfViewerAssets::register($this->view)->baseUrl) . '/css/pdf-viewer-iframe.css" rel="stylesheet">';
         return str_replace('</head>', $styles . '</head>', $sourceCode);
     }
 }

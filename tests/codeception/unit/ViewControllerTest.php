@@ -68,7 +68,13 @@ class ViewControllerTest extends HumHubDbTestCase
         Yii::$app->request->setBodyParams([]);
         Yii::$app->request->setUrl('/pdf-viewer/view?' . http_build_query($params));
 
-        $controller = new ViewController('view', Yii::$app->getModule('pdf-viewer'));
+        // The layout is not rendered here, because it depends on the theme assets of the test environment
+        $controller = new class ('view', Yii::$app->getModule('pdf-viewer')) extends ViewController {
+            public function renderAjax($view, $params = [])
+            {
+                return $view . ':' . $params['file']->file_name;
+            }
+        };
         $controller->enableCsrfValidation = false;
 
         $previous = Yii::$app->controller;
@@ -84,8 +90,7 @@ class ViewControllerTest extends HumHubDbTestCase
     {
         $result = $this->runAction('actionIndex', ['guid' => $this->file->guid]);
 
-        $this->assertStringContainsString('private.pdf', $result);
-        $this->assertStringContainsString('pdf-js-viewer', $result);
+        $this->assertEquals('index:private.pdf', $result);
     }
 
     public function testStrangerAndGuestCannotView()

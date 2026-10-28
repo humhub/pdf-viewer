@@ -5,6 +5,7 @@
  * @license https://www.humhub.com/licences
  */
 
+use humhub\helpers\Html;
 use humhub\modules\file\models\File;
 use humhub\modules\pdfViewer\assets\PdfViewerAssets;
 use humhub\modules\pdfViewer\helpers\Url;
@@ -20,5 +21,5 @@ PdfViewerAssets::register($this);
     'title' => $file->file_name,
     'size' => Modal::SIZE_FULL_SCREEN,
 ]) ?>
-    <iframe id="pdf-js-viewer" src="<?= Url::toViewer($file) ?>" title="webviewer" frameborder="0"></iframe>
+    <iframe id="pdf-js-viewer" src="<?= Html::encode(Url::toViewer($file)) ?>" title="<?= Html::encode(Yii::t('PdfViewerModule.base', 'PDF viewer')) ?>" frameborder="0"></iframe>
 <?php Modal::endDialog() ?>

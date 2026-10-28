@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.9 (Unreleased)
+------------------
+- Fix #23: Access to the PDF viewer is checked for the file
+
 1.1.8 (October 17, 2026)
 ------------------------
 - Fix humhub/humhub#8598: Unstyled PDF viewer since HumHub 1.19 due to unresolved asset base URL alias

@@ -15,6 +15,8 @@ use humhub\modules\pdfViewer\assets\PdfViewerAssets;
 use humhub\modules\pdfViewer\helpers\PdfHelper;
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
 
 class ViewController extends Controller
@@ -47,6 +49,14 @@ class ViewController extends Controller
             throw new BadRequestHttpException(Yii::t('PdfViewerModule.base', 'Could not view the requested file!'));
         }
 
+        if (!$file->canView()) {
+            throw new ForbiddenHttpException(Yii::t('PdfViewerModule.base', 'Could not view the requested file!'));
+        }
+
+        if (!$file->store->has()) {
+            throw new NotFoundHttpException(Yii::t('PdfViewerModule.base', 'Could not view the requested file!'));
+        }
+
         return $file;
     }
 
@@ -69,6 +79,7 @@ class ViewController extends Controller
         $sourceCode = preg_replace('/(<script.+?src="|<link.+?href=")/i', '$1' . $assetsUrl, $sourceCode);
 
         $styles = '<link href="' . Yii::getAlias(PdfViewerAssets::register($this->view)->baseUrl) . '/css/pdf-viewer-iframe.css" rel="stylesheet">';
+
         return str_replace('</head>', $styles . '</head>', $sourceCode);
     }
 }
